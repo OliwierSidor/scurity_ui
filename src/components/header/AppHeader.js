@@ -1,14 +1,16 @@
 import React from 'react';
 import classes from './AppHeader.module.css'
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
-const AppHeader = () => {
+const AppHeader = (props) => {
     return (
         <div className={classes.AppHeader}>
             <div className={classes.HeaderLeft}>
                 <p>ARP 4 - Security UI</p>
             </div>
             <div className={classes.HeaderRight}>
+                {props.token != null ? "Logged in" : ""}
                 <Link to={"/"}>
                     <div>Home</div>
                 </Link>
@@ -22,5 +24,9 @@ const AppHeader = () => {
         </div>
     );
 };
-
-export default AppHeader;
+const mapStateToProps = state => {
+    return {
+        token: state.authorization.token,
+    }
+}
+export default connect(mapStateToProps, null)(AppHeader);
