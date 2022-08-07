@@ -25,6 +25,7 @@
 
 .HeaderRight a {
     text-decoration: none;
+    cursor: default;
 }
 
 .HeaderRight a div {

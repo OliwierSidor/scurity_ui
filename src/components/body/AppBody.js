@@ -1,20 +1,28 @@
 import React from 'react';
 import classes from './AppBody.module.css';
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import LoginPage from "../login/LoginPage";
 import {connect} from "react-redux";
+import Home from "../Home";
+import List from "../list/List";
 
 const AppBody = (props) => {
     const getLoginContent = () => {
-        return (<LoginPage></LoginPage>)
+        return (
+            <Routes>
+                <Route path={"/"} element={<Home/>}></Route>
+                <Route path={"/login"} element={<LoginPage/>}></Route>
+                <Route path={"*"} element={<Navigate to="/login"/>}></Route>
+            </Routes>
+        )
     }
 
 
     const getContent = () => {
         return (
             <Routes>
-                <Route path={"/"}></Route>
-                {/*<Route path={"/list"} element={<XList/>}></Route>*/}
+                <Route path={"/"} element={<Home/>}></Route>
+                <Route path={"/list"} element={<List/>}></Route>
                 {/*<Route path={"/form"} element={<XForm/>}></Route>*/}
             </Routes>
         )

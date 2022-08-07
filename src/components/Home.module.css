@@ -1,0 +1,24 @@
+.Home {
+
+}
+
+@media screen and (min-width: 1000px) {
+    .Home {
+        animation: blinking 0.5s infinite;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .Home {
+        animation: blinking 1s infinite;
+    }
+}
+
+@keyframes blinking {
+    0% {
+        background-color: red;
+    }
+    100% {
+        background-color: inherit;
+    }
+}

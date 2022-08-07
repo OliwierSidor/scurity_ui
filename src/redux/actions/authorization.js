@@ -1,10 +1,16 @@
-import {AUTH_LOGIN_FAIL, AUTH_LOGIN_START, AUTH_LOGIN_SUCCESS} from "./ActionType";
+import {AUTH_LOGIN_CHECK, AUTH_LOGIN_FAIL, AUTH_LOGIN_START, AUTH_LOGIN_SUCCESS, AUTH_LOGOUT} from "./ActionType";
 import connection from "../../axios/axios";
 
 export const authorizationStart = () => {
     return {
         type: AUTH_LOGIN_START,
 
+    }
+}
+
+export const checkStorageAuthentication = () => {
+    return {
+        type: AUTH_LOGIN_CHECK
     }
 }
 export const authorizationSuccess = (token, roles) => {
@@ -17,6 +23,12 @@ export const authorizationSuccess = (token, roles) => {
 export const authorizationFail = () => {
     return {
         type: AUTH_LOGIN_FAIL
+    }
+}
+
+export const authorizationLogout = () => {
+    return {
+        type: AUTH_LOGOUT
     }
 }
 

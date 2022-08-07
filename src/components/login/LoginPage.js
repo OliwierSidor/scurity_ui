@@ -3,7 +3,6 @@ import classes from './LoginPage.module.css';
 import Card from "../card/Card";
 import {Button, Grid, TextField} from "@mui/material";
 import {Send} from "@mui/icons-material";
-import {mapDispatchToPropsFactory} from "react-redux/es/connect/mapDispatchToProps";
 import {connect} from "react-redux";
 import * as actions from "../../redux/actions/authorization";
 

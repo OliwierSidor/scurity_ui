@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './AppHeader.module.css'
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import * as actions from "../../redux/actions/authorization";
 
 const AppHeader = (props) => {
     return (
@@ -10,7 +11,6 @@ const AppHeader = (props) => {
                 <p>ARP 4 - Security UI</p>
             </div>
             <div className={classes.HeaderRight}>
-                {props.token != null ? "Logged in" : ""}
                 <Link to={"/"}>
                     <div>Home</div>
                 </Link>
@@ -20,6 +20,8 @@ const AppHeader = (props) => {
                 <Link to={"/form"}>
                     <div>Form</div>
                 </Link>
+                    {props.token == null? (<Link to={"/login"}><div>Login</div></Link>) : ("")}
+                {props.token != null? (<a onClick={()=>{props.logout()}}><div>Logout</div></a>) : ("")}
             </div>
         </div>
     );
@@ -29,4 +31,9 @@ const mapStateToProps = state => {
         token: state.authorization.token,
     }
 }
-export default connect(mapStateToProps, null)(AppHeader);
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => dispatch(actions.authorizationLogout()),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
